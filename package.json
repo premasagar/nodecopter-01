@@ -5,8 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "ar-drone": "~0.2.1",
-    "ardrone-autonomy": "~0.1.1",
-    "grunt-lib-phantomjs": "~0.3.0"
+    "ardrone-autonomy": "~0.1.1"
   },
   "devDependencies": {
     "jshint": "~2.1.11"
