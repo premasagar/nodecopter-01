@@ -9,5 +9,5 @@ exports.index = function(req, res){
 
 exports.send = function(req, res) {
   // get params && call the drone
-  console.log('calling the drone');
+  console.log(req.body.svg);
 }
