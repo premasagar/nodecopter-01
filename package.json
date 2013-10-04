@@ -1,0 +1,22 @@
+{
+  "name": "nodecopter-01",
+  "version": "0.0.0",
+  "description": "npm install git://github.com/felixge/node-ar-drone.git --save",
+  "main": "index.js",
+  "dependencies": {
+    "ar-drone": "git://github.com/felixge/node-ar-drone.git"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/premasagar/nodecopter-01.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/premasagar/nodecopter-01/issues"
+  }
+}
