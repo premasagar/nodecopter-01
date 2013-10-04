@@ -1,0 +1,12 @@
+{
+  "name": "pablo",
+  "_cacheHeaders": {
+    "Last-Modified": "Thu, 26 Sep 2013 22:32:17 GMT",
+    "Content-Length": "65160",
+    "Content-Type": "application/x-javascript"
+  },
+  "main": "index.js",
+  "_source": "http://pablojs.com/downloads/pablo.js",
+  "_target": "*",
+  "_originalSource": "http://pablojs.com/downloads/pablo.js"
+}

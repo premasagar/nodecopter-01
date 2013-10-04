@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Insert SVG file:</p>
+    <input type="text" id="file" name="file">
+    <input type="button" id="send_file" name="send_file" value="send">
+
+    <script type="text/javascript" src="/components/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/components/pablo/index.js"></script>
+
+    <script type="text/javascript">
+      $('#send_file').click(function() {
+        var filename = '/images/' + $('#file').val();
+        Pablo.load(filename, function(){
+          var objList = this.children().toArray().map(function(el){
+            return {el: el.nodeName, attr: Pablo(el).attr() };
+          });
+          $.post('/send', {svg: objList }).done(function(data) {
+            console.log(data);
+            console.log('sent!!!');
+          });
+        })
+      });
+    </script>
+  </body>
+</html>

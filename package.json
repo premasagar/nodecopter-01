@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "ar-drone": "~0.2.1",
-    "ardrone-autonomy": "~0.1.1"
+    "ardrone-autonomy": "~0.1.1",
+    "express": "~3.4.0"
   },
   "devDependencies": {
     "jshint": "~2.1.11"
