@@ -1,11 +1,11 @@
 var autonomy = require('ardrone-autonomy');
 var mission  = autonomy.createMission();
 
-var geometry = {
+var controller = {
     start: function(altitude){
         mission.takeoff()
            .zero()               // Sets the current state as the reference
-           .altitude(altitude);  // Climb to altitude = 2 metres
+           .altitude(altitude);  // Climb to altitude in metres
 
         return this;
     },
@@ -24,18 +24,21 @@ var geometry = {
             });
 
         return this;
-    },
+    }
+};
 
+var svg = {
     // x, y, width, height
     rect: function(attr){
         mission.go({
             x: attr.x,
             y: attr.y,
-            z:0,
+            z: 0.5,
             yaw:0
         });
 
-        mission.right(attr.width)
+        mission.altitude(2)
+               .right(attr.width)
                .forward(attr.height)
                .left(attr.width)
                .backward(attr.height);
@@ -73,10 +76,14 @@ var geometry = {
 
 
 function init(){
-    geometry
-        .start(3)
-        .rect(0.5, 0.5, 1.5, 1)
-        .end();
+    controller.start();
+    svg.rect({
+        x: 1,
+        y: 1,
+        width: 2,
+        height: 3
+    });
+    controller.end();
 }
 
 init();
