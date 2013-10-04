@@ -27,17 +27,22 @@ var controller = {
     }
 };
 
+/////
+
 var svg = {
+    ALTITUDE_GO: 0.5,
+    ALTITUDE_DRAW: 2,
+
     // x, y, width, height
     rect: function(attr){
         mission.go({
             x: attr.x,
             y: attr.y,
-            z: 0.5,
-            yaw:0
+            z: this.ALTITUDE_GO,
+            yaw: 0
         });
 
-        mission.altitude(2)
+        mission.altitude(this.ALTITUDE_DRAW)
                .right(attr.width)
                .forward(attr.height)
                .left(attr.width)
@@ -53,13 +58,27 @@ var svg = {
 
     // x1, y1, x2, y2
     line: function(attr){
+        mission.go({
+            x: attr.x1,
+            y: attr.y1,
+            z: this.ALTITUDE_GO,
+            yaw: 0
+        });
 
+        mission.go({
+            x: attr.x2,
+            y: attr.y2,
+            z: this.ALTITUDE_DRAW,
+            yaw: 0
+        });
+
+        return this;
     },
 
     test: function(){
         var m = mission.takeoff()
            .zero()       // Sets the current state as the reference
-           .altitude(2)  // Climb to altitude = 1 meter
+           .altitude(2)  // Climb to altitude in metres
            .forward(1)   
            .right(1)     
            .backward(1) 
@@ -77,12 +96,20 @@ var svg = {
 
 function init(){
     controller.start();
+    
     svg.rect({
-        x: 1,
-        y: 1,
-        width: 2,
-        height: 3
-    });
+            x: 1,
+            y: 1,
+            width: 2,
+            height: 3
+        })
+        .line({
+            x1: 0,
+            y1: 0,
+            x2: 3,
+            y2: 2
+        });
+
     controller.end();
 }
 
